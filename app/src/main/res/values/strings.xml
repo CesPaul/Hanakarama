@@ -1,6 +1,9 @@
 <resources>
-    <string name="app_name">HireApp</string>
+    <string name="app_name">Hanakarama</string>
     <string name="hint_input_login">Input login</string>
     <string name="hint_input_password">Input password</string>
-    <string name="login_text">Login</string>
+    <string name="login_text">Sign in</string>
+    <string name="reg_text">Sign up</string>
+    <string name="hint_reg_name">Input name</string>
+    <string name="hint_reg_phone_number">Input phone number</string>
 </resources>
