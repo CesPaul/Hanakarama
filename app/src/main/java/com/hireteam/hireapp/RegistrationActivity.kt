@@ -1,5 +1,6 @@
 package com.hireteam.hireapp
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -15,11 +16,18 @@ class RegistrationActivity : AppCompatActivity() {
         setContentView(R.layout.activity_registration)
     }
 
+    fun launch(view: View) {
+        val intent = Intent(this, SidepanelActivity::class.java)
+
+        startActivity(intent);
+    }
+
     fun registerUser(view: View){
 
         // Забираем данные
         val login = findViewById<EditText>(R.id.regLoginEditText) as EditText
         val password = findViewById<EditText>(R.id.regPasswordEditText) as EditText
+        //TODO: Добавить EditText на повтор пароля
         val name = findViewById<EditText>(R.id.regNameEditText) as EditText
         val num = findViewById<EditText>(R.id.regNumberPhone) as EditText
 
