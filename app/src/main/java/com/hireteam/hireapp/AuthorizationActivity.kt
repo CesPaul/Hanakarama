@@ -1,5 +1,6 @@
 package com.hireteam.hireapp
 
+import android.app.Activity
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.telephony.PhoneNumberFormattingTextWatcher
@@ -8,10 +9,42 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import android.content.Intent
-
+import android.os.Parcelable
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.Disposable
+import io.reactivex.schedulers.Schedulers
+import kotlin.reflect.KClass
 
 
 class AuthorizationActivity : AppCompatActivity() {
+
+    private var disposable: Disposable? = null
+
+    private val wikiApiServe by lazy {
+        WikiApiService.create("http://192.168.1.58:8080/login/")
+    }
+
+    private fun beginAuthorization(login: String, password: String) {
+        disposable = wikiApiServe.login(login,password)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(
+                // Пустой ответ - успех
+                { result -> if (result.login.isNotBlank()){
+                    Toast.makeText(this, "Добро пожаловать!", Toast.LENGTH_SHORT).show()
+
+                    val sidePanelIntent = Intent(this, SidepanelActivity::class.java)
+
+                    sidePanelIntent.putExtra("currentLogin", result.login.toString())
+                    sidePanelIntent.putExtra("currentName", result.name.toString())
+                    sidePanelIntent.putExtra("currentPhone", result.phone.toString())
+
+                    startActivity(sidePanelIntent)
+                }
+                },
+                { error -> Toast.makeText(this, "Что-то пошло не так...", Toast.LENGTH_SHORT).show() }
+            )
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,11 +67,10 @@ class AuthorizationActivity : AppCompatActivity() {
         // Поля должны быть непустыми
         if (login.text.isBlank() == false && password.text.isBlank() == false){
             // Устанавливаем поля
-            val loginTextView = findViewById<TextView>(R.id.loginTextView) as TextView
-            loginTextView.setText(login.text)
 
-            val passwordTextView = findViewById<TextView>(R.id.passwordTextView) as TextView
-            passwordTextView.setText(password.text)
+
+            beginAuthorization(login.text.toString(), password.text.toString())
+
         }
         // Иначе предупреждаем юзера
         else{
