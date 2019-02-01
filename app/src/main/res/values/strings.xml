@@ -1,16 +1,16 @@
 <resources>
-    <string name="app_name">Hanakarama</string>
-    <string name="hint_input_login">Input login</string>
-    <string name="hint_input_password">Input password</string>
-    <string name="login_text">Sign in</string>
-    <string name="reg_text">Sign up</string>
-    <string name="hint_reg_name">Input name</string>
-    <string name="hint_reg_phone_number">Input phone number</string>
+    <string name="app_name">Ханакарама</string>
+    <string name="hint_input_login">Введите логин</string>
+    <string name="hint_input_password">Введите пароль</string>
+    <string name="login_text">Войти</string>
+    <string name="reg_text">Зарегистрироваться</string>
+    <string name="hint_reg_name">Введите имя</string>
+    <string name="hint_reg_phone_number">Введите номер телефона</string>
     <string name="title_activity_sidepanel">Все объявления</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">__________</string>
     <string name="nav_header_subtitle">__________</string>
     <string name="nav_header_desc">Navigation header</string>
-    <string name="action_settings">Settings</string>
+    <string name="action_settings">Настройки</string>
 </resources>

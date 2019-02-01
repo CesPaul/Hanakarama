@@ -74,7 +74,7 @@ class AuthorizationActivity : AppCompatActivity() {
         }
         // Иначе предупреждаем юзера
         else{
-            val toast = Toast.makeText(this, "Please enter data", Toast.LENGTH_SHORT)
+            val toast = Toast.makeText(this, "Введите данные полностью", Toast.LENGTH_SHORT)
             toast.show()
         }
 

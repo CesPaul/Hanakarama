@@ -11,6 +11,8 @@ import android.util.AttributeSet
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.ArrayAdapter
+import android.widget.ListView
 import android.widget.TextView
 import kotlinx.android.synthetic.main.activity_authorization.*
 import kotlinx.android.synthetic.main.activity_sidepanel.*
@@ -18,6 +20,8 @@ import kotlinx.android.synthetic.main.app_bar_sidepanel.*
 import kotlinx.android.synthetic.main.nav_header_sidepanel.*
 
 class SidepanelActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+
+    private lateinit var listView: ListView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,6 +35,8 @@ class SidepanelActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
         toggle.syncState()
 
         nav_view.setNavigationItemSelectedListener(this)
+
+
     }
 
     override fun onBackPressed() {
