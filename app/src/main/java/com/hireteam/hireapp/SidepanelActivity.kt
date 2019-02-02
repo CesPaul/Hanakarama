@@ -1,6 +1,7 @@
 package com.hireteam.hireapp
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.design.widget.NavigationView
@@ -82,6 +83,8 @@ class SidepanelActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
 
             }
             R.id.nav_createItem -> {
+                val createItemIntent = Intent(this, CreateItemActivity::class.java)
+                startActivity(createItemIntent)
 
             }
             R.id.nav_settings -> {

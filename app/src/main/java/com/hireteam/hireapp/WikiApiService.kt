@@ -47,6 +47,14 @@ interface WikiApiService {
     fun login(@Field("login") login: String,
                 @Field("password") password: String): Observable<AuthorizationResponse.Result>
 
+    // POST-запрос на аутентификацию
+    @POST(".")
+    @FormUrlEncoded
+    fun createItem(@Field("title") title: String,
+                   @Field("description") description: String,
+                   @Field("price") price: Int,
+                   @Field("date_to_end") date_to_end: String): Observable<AuthorizationResponse.Result>
+
 
 
     companion object {
